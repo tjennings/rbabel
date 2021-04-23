@@ -4,17 +4,6 @@ enum Bencode {
     List(Vec<Bencode>)
 }
 
- // impl fmt::Display for Bencode {
- //   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
- //       let printable = match *self {
- //           Bencode::Int(intv) => write!(f, "{}", intv),
- //           Bencode::List(vecv) => write!(f, "{}", vecv.join(',')),
- //           Bencode::None => write!(f, "")
- //       };
- //       return printable;
- //   }
- // }
-
 fn parse_int(chars: &mut Vec<char>) -> Option<Bencode>{
     let e_idx = chars.iter().rposition(|&e| e == 'e').unwrap();
     let int_chars = &chars[e_idx + 1..chars.len()];
